@@ -1,0 +1,1298 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*Estilos para todas las páginas*/
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--texto-base);
+    line-height: var(--linea-base);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+strong {
+    color: inherit;
+    font-size: inherit;
+}
+
+/*Font para claims*/
+.font-claims {
+    font-family: "Barlow", sans-serif;
+    font-style: italic;
+}
+
+/*----Variables Reutilizables-----*/
+:root {
+
+    /*---------colores---------*/
+    --negro: #2D2D2D;
+    --negro-oscuro: #000;
+    --blanco: #fff; 
+    --rojo: #FA0C00;
+    --rojo-oscuro: #db0b00;
+
+    /*----------Tamaños y estilo de letra---------*/
+
+    /*Texto base*/
+    --texto-base: 17px;
+    --linea-base: 1.3;
+
+    /*Titulos y subtitulos*/
+    --titulo-principal: 100px;
+    --titulo-seccion: 90px;
+    --subtitulo-destacado: 50px;
+    --subtitulo: 40px;
+    --texto-destacado: 35px;
+    --texto-tarjetas: 32px;
+    --texto-secundario: 23px;
+
+    /*weight*/
+    --weight-800: 800;
+    --weight-700: 700;
+    --weight-600: 600;
+    --weight-400: 400;
+
+    /*------Estilo secciones especificas-------*/
+    --texto-mas: 150px;
+    --sombra-texto: -6px -6px 0px rgb(179, 179, 179);
+
+    /*------Estilo botones-------*/
+    --btn-bg-default-negro: var(--negro-oscuro);
+    --btn-bg-default-rojo: var(--rojo-oscuro);
+    --btn-color-default: #ffffff;
+    --btn-padding: 1rem 2.5rem;
+    --btn-radius: 40px;
+    --btn-font-size: 1.5rem;
+    --btn-weight: 800; /* Equivalente a bolder */
+    --btn-transition: 0.3s ease;
+    /* Estados */
+    --btn-hover-transform: translateY(-2px);
+    --btn-active-transform: translateY(1px);
+}
+
+.titulo-principal-paginas {
+    font-size: var(--titulo-principal);
+    font-weight: var(--weight-800);
+}
+
+.texto-negrita {
+    font-weight: var(--weight-600);
+    font-size: inherit;
+}
+
+.texto-seccion {
+    text-align: center;
+    font-size: var(--titulo-seccion);
+    font-weight: var(--weight-800);
+}
+
+.texto-centrado {
+    text-align: center;
+}
+
+/*Colores de fondo*/
+.color-fondo-negro {
+    background-color: var(--negro-oscuro);
+}
+
+.color-fondo-rojo {
+    background-color: var(--rojo);
+}
+
+.texto-rojo{
+    color: var(--rojo);
+}
+
+.texto-negro{
+    color: var(--negro-oscuro);
+}
+
+/*Sombras texto*/
+.titulo-sombra {
+    text-shadow: var(--sombra-texto);
+}
+
+
+/*-----------ESTILOS NAVBAR-------------*/
+header {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    z-index: 1000;
+}
+
+/*Texto subrayado en pagina en la que se está*/
+.texto-subrayado-rojo {
+    border-bottom: 4px solid var(--rojo);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo-luceros img {
+    width: 8rem;
+    margin: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: flex;
+    position: relative;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--negro-oscuro);
+    font-size: var(--texto-base);
+    font-weight: var(--weight-400);
+    padding: 0;   
+}
+
+.nav-links li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;  
+    top: 10%;
+    height: 80%; 
+    width: 2px;
+    background-color: var(--negro-oscuro);
+}
+
+.nav-links .programas-mod {
+    font-weight: var(--weight-800);
+    color: var(--rojo);
+}
+
+.nav-links .programas-mod:hover {
+    color: var(--rojo-oscuro);
+}
+
+.nav-links .contacto-mod {
+    font-weight: var(--weight-800);
+    background-color: var(--rojo);
+    padding: 0.3rem 1.2rem;
+    border-radius: 0.4rem;
+    color: var(--blanco);
+}
+
+.nav-links .contacto-mod:hover {
+    background-color: var(--rojo-oscuro);
+    transition: background-color 0.3s ease;
+}
+
+/*-----------ESTILOS DESPLEGABLE-------------*/
+
+.desplegable {
+    position: relative;
+}
+
+/* Cambia el grid a 1 columna por sección */
+.submenu {
+    position: absolute;
+    top: 2rem;
+    left: -2rem;
+    background-color: var(--blanco);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-1rem);
+    transition: all 0.2s ease;
+    min-width: 40rem;
+    z-index: 100;
+    list-style: none;
+    
+    /* Añade esto: las dos secciones en columnas */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+}
+
+.submenu-section {
+    margin-bottom: 0; /* Quita el margin-bottom anterior */
+    display: flex;
+    flex-direction: column; /* Título arriba, grid abajo */
+}
+
+/* Línea divisoria entre las dos secciones */
+.submenu-section:first-child {
+    border-right: 2px solid #e0e0e0;
+    padding-right: 3rem;
+}
+
+.submenu-section:last-child {
+    margin-bottom: 0;
+}
+
+.submenu-section::after {
+    display: none;
+}
+
+.desplegable:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.titulo-submenu {
+    font-weight: var(--weight-800);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem; /* Un poco más de separación */
+    display: block;
+    text-align: left;
+}
+
+/* El grid interno ahora es de 1 columna (lista vertical) */
+.program-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start; /* Alinea los links a la izquierda */
+}
+
+.program-grid a {
+    text-decoration: none;
+    color: var(--negro);
+    transition: transform 0.2s ease;
+    font-size: 0.9rem;
+    text-align: left; /* Alineación izquierda */
+}
+
+.program-grid a:hover {
+    color: var(--rojo-oscuro);
+    transform: translateX(0.2rem);
+}
+
+/*Flechas que apuntan a cada programa*/
+.program-grid a::before {
+    content: "›";
+    color: #848484;
+    margin-right: 0.4rem;
+    transition: color 0.2s ease;
+    font-size: 1.4rem;
+}
+
+.program-grid a:hover::before {
+    color: var(--rojo-oscuro);
+}
+
+/*---------LANDING PAGE----------*/
+
+/*----------------IMÁGEN DE FONDO ESTRELLA---------------------------*/
+
+.fondo-estrella {
+    background-image: url('../img/estrella_con_cesped.png');
+    background-repeat: no-repeat;
+    background-position: 0% -0%;
+    background-size: 1100px;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+/*----------------------ESTILOS HERO------------------------*/
+
+#hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10rem;
+}
+
+/*Contenido izquierda*/
+.hero-left img {
+    width: 100vw;
+    max-width: 700px;
+    height: auto;
+}
+
+/*Contenido derecha*/
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-right img {
+    width: 650px;
+    height: auto;
+}
+
+.contenedor-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10rem;
+}
+
+.contenedor-right h1 {
+    font-size: var(--titulo-principal);
+    font-weight: var(--weight-800);
+    color: var(--rojo);
+}
+
+.span-360 {
+    font-size: 220px;
+    display: inline-block;
+    margin-top: -4rem;
+    color: inherit;
+}
+
+/*----------------------BIENVENIDA LUCEROS------------------------*/
+
+.bienvenida-luceros {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.bienvenida-izquierda {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+.contenedor-bienvenida-superior h2 {
+    font-size: var(--titulo-principal);
+    font-weight: var(--weight-800);
+    line-height: 1;
+    letter-spacing: -0.07em;
+    margin-bottom: -0.3rem;
+}
+
+.contenedor-bienvenida-superior span {
+    font-size: var(--texto-destacado);
+}
+
+.contenedor-bienvenida-inferior span {
+    font-size: var(--texto-secundario);
+    font-weight: var(--weight-600);
+}
+
+.contenedor-bienvenida-inferior strong {
+    font-weight: var(--weight-700);
+}
+
+.bienvenida-derecha img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bienvenida-izquierda,
+.bienvenida-derecha {
+    flex: 0 0 50rem;
+    max-width: 600px;
+}
+
+.contenedor-bienvenida-inferior {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1.1rem;
+}
+
+/*----------------------APRENDIZAJE INTEGRAL------------------------*/
+
+.imagen-tecnificacion img{
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+    padding: 3rem;
+}
+
+.pasar-de-nivel {
+    font-weight: var(--weight-800);
+    font-size: var(--texto-destacado) !important;
+}
+
+.contenedor-aprendizaje-integral {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3rem;
+    background-color: var(--rojo);
+    color: var(--blanco);
+}
+
+.contenedor-mente-cuerpo-balon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;    
+}
+
+.contenedor-mente-cuerpo-balon .texto-mas {
+    font-size: var(--texto-mas);
+    font-weight: var(--weight-800);
+}
+
+.contenedor-mcb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-mcb span {
+    color: var(--negro);
+    font-size: var(--subtitulo);
+    font-weight: var(--weight-800);
+    padding-top: 1rem;
+}
+
+.contenedor-mcb img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: block;  
+}
+
+.info-aprendizaje-integral {
+    padding: 0rem 10rem;
+    text-align: justify;
+}
+
+.info-aprendizaje-integral span {
+    font-size: var(--texto-secundario);
+}
+
+.contenedor-mental-fisico-tecnico {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 3rem;
+    padding: 0rem 10rem;
+}
+
+.contenedor-bloque {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30%;
+    min-width: 250px;
+    box-sizing: border-box;
+    color: var(--blanco);
+}
+
+.contenedor-subtitulo {
+    padding-bottom: 10px;
+    border-bottom: 4px solid var(--negro);
+}
+
+.contenedor-subtitulo h3 {
+    margin-bottom: 0.1rem;
+    margin-top: 0;
+    font-size: var(--subtitulo);
+}
+
+.contenedor-subtitulo span {
+    font-style: italic;
+}
+
+.contenedor-caja-linea-superior {
+    padding-top: 1rem;
+    text-align: justify;
+}
+
+/*cesped*/
+.cesped {
+   background-image: url(../img/cesped2.png);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 25vh;
+   padding: 0;
+   margin: 0;
+}
+
+/*-----------SECCIÓN PROGRAMAS-------------*/
+
+.contenedor-programas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.claim-programas {
+    font-size: var(--texto-destacado);
+    font-weight: var(--weight-800);
+}
+
+.claim-rojo {
+    color: var(--rojo);
+}
+
+.grid-programas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem clamp(1rem, 5vw, 10rem);
+}
+
+/* TARJETA PROGRAMA */
+
+.tarjeta-programa {
+    position: relative;
+    display: block;
+
+    flex: 1 1 calc((100% - 4rem) / 3); 
+    max-width: 24rem;
+    min-width: 24rem;
+
+    height: 20rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* TARJETAS PROXIMAS FORMACIONES (IMG) */
+
+.tarjeta-programa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre la caja sin deformarse */
+    display: block;
+}
+
+/* IMAGEN DE FONDO */
+
+.fondo-tarjeta {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/*-------- TARJETA FRONTAL --------*/
+
+.tarjeta-frente {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5rem;
+}
+
+.titulo-tarjeta {
+    color: var(--blanco);
+    margin-top: 0.3rem;
+    font-size: var(--texto-tarjetas);
+}
+
+.titulo-tarjeta span {
+    font-size: var(--texto-secundario);
+}
+
+/* BOTÓN + INFO */
+
+.tarjeta-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+}
+
+.tarjeta-info span {
+    font-weight: var(--weight-700);
+}
+
+/*------- TARJETA TRASERA --------*/
+
+.tarjeta-trasera {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    color: var(--blanco);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.1s ease;
+}
+
+/* INTERACCIONES */
+
+.tarjeta-programa:hover .tarjeta-trasera {
+    transform: translateY(0);
+}
+
+/*----------------------SECCION EMBAJADORES------------------------*/
+
+.seccion-embajadores {
+    padding: 3rem 3rem;
+    color: var(--blanco);
+}
+
+.seccion-embajadores h2{
+    color: var(--blanco);
+}
+
+.embajadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.embajador {
+    flex: 1 1 calc(25% - 2rem); 
+    max-width: calc(25% - 2rem);
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.foto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid var(--rojo);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nombre {
+    margin-top: 0.8rem;
+    font-size: var(--texto-secundario);
+    font-weight: var(--weight-600);
+}
+
+/*-------------SECCION PATROCINADORES/COLABORADORES-------------*/
+.seccion-patrocinadores-colaboradores {
+    padding: 3rem 3rem;
+    text-align: center;
+}
+
+.seccion-patrocinadores-colaboradores h2 {
+    font-size: var(--subtitulo);
+    font-weight: var(--weight-800);
+    color: var(--rojo);
+}
+
+.fila {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+/* CUADROS GENERALES */
+.cuadro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* IMÁGENES PERFECTAMENTE AJUSTADAS */
+.cuadro img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* TAMAÑOS */
+.grande {
+    flex: 1 1 30rem;   /* crece, se encoge, base 300px */
+    max-width: 300px;
+    height: 250px;
+}
+
+.pequeno {
+    flex: 1 1 30rem;
+    max-width: 200px;
+    height: 150px;
+}
+
+/* RESPONSIVE — máx 5 por fila */
+.fila > .cuadro {
+    flex-grow: 1;
+}
+
+.carrusel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 40px 0;
+}
+
+/* Ventana que RECORTA lo que sobra */
+.ventana-carrusel {
+    width: 40rem;
+    overflow: hidden;
+    padding-top: 3rem;
+}
+
+/* Fila interna que se mueve */
+.carrusel {
+    display: flex;
+    gap: 3rem;
+    transition: transform 0.4s ease;
+}
+
+/* Cuadros del carrusel */
+.carrusel .cuadro.grande {
+    flex: 0 0 30rem; /* ancho fijo */
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carrusel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Flechas */
+.flecha {
+    color: var(--rojo);
+    border: none;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+    background: none;
+    padding-top: 3rem;
+}
+
+/*----------------------SECCION FOOTER------------------------*/
+
+.container-final {
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 5vw;
+    color: var(--blanco);
+}
+
+.footer-col h4 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-col a {
+    color: var(--blanco);
+}
+
+.footer-col p, .footer-col a, .footer-col li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.logo-copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.logo-copyright img {
+    display: block;
+    width: 30%;
+    height: auto;
+    padding-top: 5rem;
+}
+
+.logo-copyright p {
+    width: 100%;
+    text-align: center;
+}
+
+
+/*---------PAGINA ACADEMIA----------*/
+
+.nav-spacer {
+    width: 100%;
+    /* Ajusta estos píxeles hasta que el video quede perfecto */
+    height: 125px; 
+    display: block;
+    background-color: transparent;
+}
+
+.hero-img {
+    width: 100vw;
+    height: 73vh; /* Altura cinemática (60% del alto de la pantalla) */
+    overflow: hidden;
+    
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    
+}
+
+/* contenedor principal*/
+
+.hero_contenido-academia {
+   display: grid;
+   place-items: center;
+}
+
+.cont-contenido-academia {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.texto_secundario {
+    text-align: center;
+    font-size: var(--texto-destacado);
+    font-weight: var(--weight-800);
+}
+
+.hero_contenido-academia h1 {
+    text-align: center;
+    font-size: var(--titulo-principal);
+    font-weight: var(--weight-800);
+    color: var(--rojo);
+    text-shadow: -6px  -7px 0 #b4b3b3;
+    margin: 1rem;
+}
+
+.texto_contenido p{
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2D2D2D;
+    text-align: justify;
+
+}
+
+
+/*---------PAGINA METODOLOGÍA----------*/
+
+/*--------Hero página de metodología---------*/
+.contenedor-metodologia{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3rem;
+}
+
+
+/*---------Section Formación, experiencia y proyección-----------*/
+/* NO BORRAR SE ESTA UTILIZANDO EN PAGINA ACADEMIA */
+.contenedor-formacion-experiencia-proyeccion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3rem;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    margin-top: 2rem;
+    padding-top: 6rem;
+}
+
+/*Section formación experiencia proyección*/
+.subtitulo-fep h2{
+    font-size: var(--subtitulo);
+    margin: 0;
+}
+
+.recuadro {
+    flex: 1;
+    position: relative;
+    padding: 2rem;
+}
+
+.recuadro::before,
+.recuadro::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+  
+}
+
+/* Esquina superior izquierda */
+.recuadro::before {
+    top: 0;
+    left: 0;
+    border-top: 5px solid var(--blanco);
+    border-left: 5px solid var(--blanco);
+}
+
+/* Esquina inferior derecha */
+.recuadro::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 5px solid var(--blanco);
+    border-right: 5px solid var(--blanco);
+}
+
+/* NO BORRAR SE ESTA UTILIZANDO EN PAGINA ACADEMIA */
+.cont_formacion_experiencia_proyeccion{
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 3rem;
+    padding: 0rem 5rem;
+}
+
+.cesped_academia {
+   background-image: url(../img/cesped2.png);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 25vh;
+   padding: 0;
+   margin: 0;
+   position: relative;
+}
+
+/*SECCION OBJETIVOS*/
+
+.cont_seccion_objetivos {
+    display: grid;
+    place-items: center;
+}
+
+.cont-principal-objetivos {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 3rem;
+}
+
+/*contenedores objetivos*/
+
+.cont_cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.card_objetivos {
+    background-color: var(--negro-oscuro);
+    color: var(--blanco);
+    text-align: justify;
+    padding: 2rem;
+}
+
+.card_objetivos h2 {
+    text-align: center;
+    font-size: var(--texto-destacado);
+    font-weight: var(--weight-800);
+    margin: 0;
+}
+
+.card_objetivos ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+
+/*---------PAGINA ACADEMIA----------*/
+
+.cargos-directivos {
+    margin-top: -1rem;
+    font-weight: var(--weight-600);
+}
+
+.luceros-ambassadors {
+    font-weight: var(--weight-800);
+}
+
+/*---------COMIENZO ESTILOS APPWEB----------*/
+/*---------ATENCION-------------*/
+
+/* ─── ESTILOS AUTENTICACIÓN (login, registro) ─── */
+
+.contenedor-auth {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--negro-oscuro);
+    padding: 2rem;
+    padding-top: 150px;
+}
+
+.caja-auth {
+    background-color: var(--blanco);
+    padding: 3rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    border-top: 5px solid var(--rojo);
+}
+
+.caja-auth h1 {
+    font-size: 2rem;
+    font-weight: var(--weight-800);
+    color: var(--negro-oscuro);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.campo-form label {
+    font-size: 0.9rem;
+    font-weight: var(--weight-600);
+    color: var(--negro);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.campo-form input,
+.campo-form select,
+.campo-form textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.campo-form input:focus,
+.campo-form select:focus,
+.campo-form textarea:focus {
+    outline: none;
+    border-color: var(--rojo);
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: var(--weight-800);
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.btn-auth:hover {
+    background-color: var(--rojo-oscuro);
+}
+
+.mensaje-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: var(--weight-600);
+}
+
+.mensaje-exito {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: var(--weight-600);
+}
+
+.enlace-auth {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--negro);
+}
+
+.enlace-auth a {
+    color: var(--rojo);
+    font-weight: var(--weight-700);
+    text-decoration: none;
+}
+
+.enlace-auth a:hover {
+    text-decoration: underline;
+}
+
+/* ─── ESTILOS PANEL (rutinas, cursos) ─── */
+
+.contenedor-panel {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    padding: 8rem 2rem 0 2rem;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--rojo);
+    padding-bottom: 1rem;
+}
+
+.panel-header h1 {
+    font-size: 2rem;
+    font-weight: var(--weight-800);
+    color: var(--negro-oscuro);
+}
+
+.btn-panel {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    padding: 0.7rem 1.5rem;
+    border-radius: 40px;
+    font-weight: var(--weight-800);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-panel:hover {
+    background-color: var(--rojo-oscuro);
+}
+
+.panel-vacio {
+    text-align: center;
+    color: var(--gris);
+    font-size: 1.1rem;
+    margin-top: 3rem;
+}
+
+.lista-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tarjeta-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--blanco);
+    border: 1px solid #e5e7eb;
+    border-left: 5px solid var(--rojo);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.tarjeta-panel:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tarjeta-panel-info h3 {
+    font-size: 1.1rem;
+    font-weight: var(--weight-700);
+    color: var(--negro-oscuro);
+    margin-bottom: 0.3rem;
+}
+
+.tarjeta-panel-info p {
+    font-size: 0.9rem;
+    color: var(--gris);
+}
+
+.tarjeta-panel-acciones {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.btn-editar {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--negro-oscuro);
+    color: var(--blanco);
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: var(--weight-700);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+    background-color: var(--negro);
+}
+
+.btn-borrar {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: var(--weight-700);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-borrar:hover {
+    background-color: var(--rojo-oscuro);
+}
