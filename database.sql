@@ -85,6 +85,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contrasena`, `rol`, `created_at`) VALUES
 (1, 'Test Alumno', 'alumno@test.com', '$2y$10$CDO5OepAnTrZKWIeyJY4jOL8D3egMiwfxK23kDme6CEEDhgsl/sHi', 'alumno', '2026-04-08 17:03:37');
+(2, 'Test Profesor', 'profesor@luceros.com', '$2b$12$x.MaLC0n0BDfkgc4lNdESOke/ng8QYKsKw4pmqo7mf2r4G7MUzngW', 'profesor', '2026-04-08 17:03:37');
 
 --
 -- Indexes for dumped tables

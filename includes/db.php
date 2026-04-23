@@ -1,4 +1,7 @@
 <?php
+//Código que puede usar el profesor para registrarse como tal:
+define('CODIGO_PROFESOR', 'LUCEROS2026');
+
 $host = '127.0.0.1';
 $puerto = '3307';
 $dbname = 'luceros_db';

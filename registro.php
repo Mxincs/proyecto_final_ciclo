@@ -6,10 +6,10 @@ $error = '';
 $exito = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = trim($_POST['nombre']);
-    $email = trim($_POST['email']);
+    $nombre    = trim($_POST['nombre']);
+    $email     = trim($_POST['email']);
     $contrasena = trim($_POST['contrasena']);
-    $rol = $_POST['rol'];
+    $rol       = $_POST['rol'];
 
     if (empty($nombre) || empty($email) || empty($contrasena)) {
         $error = 'Todos los campos son obligatorios.';
@@ -17,7 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'El email no es válido.';
     } elseif (strlen($contrasena) < 6) {
         $error = 'La contraseña debe tener al menos 6 caracteres.';
-    } else {
+    } elseif ($rol === 'profesor') {
+
+        // Validar código secreto solo si el rol es profesor
+        $codigo = trim($_POST['codigo_profesor'] ?? '');
+        if ($codigo !== CODIGO_PROFESOR) {
+            $error = 'El código de acceso para profesores no es válido.';
+        }
+    }
+
+    if (empty($error)) {
+
         // Comprobar si el email ya existe
         $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
@@ -52,23 +62,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" action="registro.php">
                 <div class="campo-form">
                     <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan García" required>
                 </div>
                 <div class="campo-form">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="Ej: sucorreo@gmail.com" required>
                 </div>
                 <div class="campo-form">
                     <label for="contrasena">Contraseña</label>
-                    <input type="password" id="contrasena" name="contrasena" required>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Mínimo 6 caracteres" required>
                 </div>
                 <div class="campo-form">
                     <label for="rol">Rol</label>
-                    <select id="rol" name="rol">
+                    <select id="rol" name="rol" onchange="toggleCodigoProfesor(this.value)">
                         <option value="alumno">Alumno</option>
                         <option value="profesor">Profesor</option>
                     </select>
                 </div>
+
+                <!-- Campo código profesor — oculto por defecto, aparece al seleccionar Profesor -->
+                <div class="campo-form" id="campo-codigo" style="display: none;">
+                    <label for="codigo_profesor">Código de acceso para profesores</label>
+                    <input type="password" id="codigo_profesor" name="codigo_profesor" placeholder="Introduce el código secreto">
+                    <p>El código se lo debe proporcionar el administrador</p>
+                </div>
+
                 <button type="submit" class="btn-auth">CREAR CUENTA</button>
             </form>
 
@@ -78,5 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </main>
+
+<script>
+
+    // Muestra u oculta el campo de código según el rol seleccionado
+    function toggleCodigoProfesor(rol) {
+        const campo = document.getElementById('campo-codigo');
+        campo.style.display = rol === 'profesor' ? 'flex' : 'none';
+    }
+</script>
 
 <?php include 'includes/footer.php'; ?>
