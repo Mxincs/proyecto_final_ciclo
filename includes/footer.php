@@ -10,11 +10,9 @@
             </div>
             <div class="footer-col logo-copyright">
                 <img src="/luceros-pfg/img/logo_LUCEROS.png" alt="logo luceros">
-                <p>© 2025 LUCEROS.</p>
+                <p>© 2026 LUCEROS.</p>
             </div>
         </div>
     </footer>
-
-    <script src="/luceros-pfg/js/home.js" defer></script>
 </body>
 </html>
