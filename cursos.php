@@ -2,7 +2,7 @@
 require_once 'includes/db.php';
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Vista pública — cualquier visitante puede ver los cursos
+// Obtener todos los cursos
 $stmt = $pdo->query("
     SELECT cursos.*, usuarios.nombre AS nombre_profesor 
     FROM cursos 
@@ -11,6 +11,13 @@ $stmt = $pdo->query("
 ");
 $cursos = $stmt->fetchAll();
 
+// Si el usuario es alumno, obtener sus inscripciones para saber en cuáles ya está
+$inscripciones_alumno = [];
+if (isset($_SESSION['usuario']) && $_SESSION['rol'] === 'alumno') {
+    $stmt2 = $pdo->prepare("SELECT id_curso FROM inscripciones WHERE id_alumno = ?");
+    $stmt2->execute([$_SESSION['usuario']]);
+    $inscripciones_alumno = array_column($stmt2->fetchAll(), 'id_curso');
+}
 ?>
 
 <?php include 'includes/header.php'; ?>
@@ -44,6 +51,24 @@ $cursos = $stmt->fetchAll();
                                 <br><em>Creado por: <?= htmlspecialchars($curso['nombre_profesor']) ?></em>
                             </p>
                         </div>
+
+                        <!-- Botón de inscripción solo para alumnos -->
+                        <?php if (isset($_SESSION['usuario']) && $_SESSION['rol'] === 'alumno'): ?>
+                            <div class="tarjeta-panel-acciones">
+                                <?php if (in_array($curso['id'], $inscripciones_alumno)): ?>
+                                    <span class="btn-inscrito">✓ INSCRITO</span>
+                                <?php else: ?>
+                                    <a href="alumno/inscribirse.php?id=<?= $curso['id'] ?>" class="btn-editar">INSCRIBIRSE</a>
+                                <?php endif; ?>
+                            </div>
+                        <?php elseif (!isset($_SESSION['usuario'])): ?>
+                            
+                            <!-- Usuario no logueado: invitar a registrarse -->
+                            <div class="tarjeta-panel-acciones">
+                                <a href="login.php" class="btn-editar">INICIAR SESIÓN PARA INSCRIBIRSE</a>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                 <?php endforeach; ?>
             </div>
