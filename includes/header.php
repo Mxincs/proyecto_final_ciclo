@@ -17,18 +17,30 @@
             <img src="/luceros-pfg/img/logo_LUCEROS_IFA.png" alt="Logo Luceros IFA">
         </a>
 
-        <ul class="nav-links">
+        <!-- Botón hamburguesa — solo visible en móvil -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="/luceros-pfg/cursos.php">CURSOS</a></li>
 
             <?php if (isset($_SESSION['usuario'])): ?>
+
                 <?php if ($_SESSION['rol'] === 'alumno'): ?>
                     <li><a href="/luceros-pfg/alumno/rutinas.php">MIS RUTINAS</a></li>
+                    <li><a href="/luceros-pfg/alumno/mis_cursos.php">MIS CURSOS</a></li>
                 <?php endif; ?>
+
                 <?php if ($_SESSION['rol'] === 'profesor'): ?>
                     <li><a href="/luceros-pfg/alumno/rutinas.php">MIS RUTINAS</a></li>
                     <li><a href="/luceros-pfg/profesor/gestionar_cursos.php">GESTIONAR CURSOS</a></li>
                 <?php endif; ?>
+
                 <li><a href="/luceros-pfg/logout.php" class="contacto-mod">CERRAR SESIÓN</a></li>
+
             <?php else: ?>
                 <li><a href="/luceros-pfg/login.php">INICIAR SESIÓN</a></li>
                 <li><a href="/luceros-pfg/registro.php" class="contacto-mod">REGISTRO</a></li>
@@ -37,3 +49,18 @@
 
     </nav>
 </header>
+
+<script>
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('abierto');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('abierto');
+        });
+    });
+</script>

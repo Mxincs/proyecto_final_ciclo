@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Campo código profesor — oculto por defecto, aparece al seleccionar Profesor -->
                 <div class="campo-form" id="campo-codigo" style="display: none;">
                     <label for="codigo_profesor">Código de acceso para profesores</label>
-                    <input type="password" id="codigo_profesor" name="codigo_profesor" placeholder="Introduce el código secreto">
+                    <input type="password" id="codigo_profesor" name="codigo_profesor" placeholder="Introduzca el código secreto">
                     <p>El código se lo debe proporcionar el administrador</p>
                 </div>
 

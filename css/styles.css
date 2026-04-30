@@ -397,7 +397,7 @@ header {
 
 /* Párrafo descriptivo con padding horizontal */
 .info-aprendizaje-integral {
-    padding: 0rem 10rem;
+    padding: 2rem 10rem;
     text-align: justify;
 }
 
@@ -677,4 +677,338 @@ header {
 
 .btn-borrar:hover {
     background-color: var(--rojo-oscuro);
+}
+
+/* Estilos inscripción */
+.btn-inscrito {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #2ecc71;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: default;
+}
+ 
+.mensaje-exito {
+    color: #2ecc71;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+ 
+/* ==========================================================================
+   7. RESPONSIVE — Media queries para móvil y tablet
+   Breakpoints:
+   - Tablet:  max-width 1024px
+   - Móvil:   max-width 768px
+   - Móvil S: max-width 480px
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   MENÚ DESPLEGABLE — solo visible en móvil
+   -------------------------------------------------------------------------- */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    background: none;
+    border: none;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--negro-oscuro);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 17px;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET — max-width: 1024px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+    :root {
+        --titulo-principal: 65px;
+        --titulo-seccion: 55px;
+        --subtitulo: 28px;
+        --texto-destacado: 24px;
+        --texto-mas: 90px;
+    }
+
+    /* Hero */
+    .hero-left img {
+        max-width: 45vw;
+    }
+
+    .hero-right img {
+        width: 45vw;
+    }
+
+    .span-360 {
+        font-size: 130px;
+        padding-top: 2rem;
+    }
+
+    /* Bienvenida */
+    .bienvenida-izquierda,
+    .bienvenida-derecha {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+    /* Aprendizaje */
+    .info-aprendizaje-integral {
+        padding: 0 4rem;
+    }
+
+    /* Footer */
+    .container-final {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .logo-copyright {
+        grid-column: span 2;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   MÓVIL — max-width: 768px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    /* Estrella más pequeña en móvil */
+    .fondo-estrella {
+        background-image: none;
+    }
+
+    /* Ocultar imagen del jugador en móvil */
+    .hero-left {
+        display: none;
+    }
+
+    /* Hero: solo el logo centrado */
+    #hero {
+        justify-content: center;
+        padding-top: 7rem;
+    }
+
+    /* Variables: reducir más los textos */
+    :root {
+        --titulo-principal: 48px;
+        --titulo-seccion: 36px;
+        --subtitulo-destacado: 28px;
+        --subtitulo: 22px;
+        --texto-destacado: 20px;
+        --texto-tarjetas: 20px;
+        --texto-secundario: 17px;
+        --texto-mas: 60px;
+    }
+
+    /* --- Navbar hamburguesa --- */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .logo-luceros img {
+        width: 5rem;
+        margin: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.97);
+        padding: 1rem 0;
+        border-top: 2px solid #eee;
+    }
+
+    /* Clase que activa el menú al hacer clic */
+    .nav-links.abierto {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 0.7rem 1.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Quitar separador vertical en móvil */
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    /* --- Hero --- */
+    #hero {
+        flex-direction: column;
+        padding-top: 6rem;
+        text-align: center;
+    }
+
+    .hero-right img {
+        padding-top: 15rem;
+        width: 80vw;
+    }
+
+    .span-360 {
+        font-size: 100px;
+        margin-top: -1rem;
+    }
+
+    /* --- Bienvenida --- */
+    .bienvenida-luceros {
+        flex-direction: column;
+        align-items: center;
+        padding: 0rem 2rem;
+        text-align: justify;
+    }
+
+    .contenedor-bienvenida-superior h2 {
+        background-color: var(--rojo);
+        color: var(--blanco);
+        text-align: center;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .bienvenida-izquierda,
+    .bienvenida-derecha {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .imagen-jugador-bienvenida {
+        display: block;
+        width: 100%;
+    }
+
+    /* --- Aprendizaje integral --- */
+    .contenedor-mente-cuerpo-balon {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contenedor-mcb img {
+        height: 150px;
+    }
+
+    .info-aprendizaje-integral {
+        padding: 0 1.5rem;
+    }
+
+    .texto-seccion {
+        font-size: var(--titulo-seccion);
+        padding: 1rem;
+    }
+
+    /* --- Footer --- */
+    .container-final {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+    }
+
+    .logo-copyright {
+        grid-column: span 1;
+    }
+
+    .logo-copyright img {
+        padding-top: 1rem;
+        width: 50%;
+    }
+
+    /* --- Panel (rutinas / cursos) --- */
+    .contenedor-panel {
+        padding: 6rem 1rem 2rem 1rem;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .panel-header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Tarjetas: apilar info y botones verticalmente */
+    .tarjeta-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .tarjeta-panel-acciones {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    /* --- Auth (login / registro) --- */
+    .caja-auth {
+        padding: 2rem 1.5rem;
+    }
+
+    .caja-auth h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   MÓVIL PEQUEÑO — max-width: 480px
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    :root {
+        --titulo-principal: 36px;
+        --titulo-seccion: 28px;
+    }
+
+    .span-360 {
+        font-size: 70px;
+    }
+
+    .hero-right img {
+        width: 85vw;
+    }
+
+    .contenedor-right {
+        margin-top: -3rem;
+    }
+
+    .tarjeta-panel-acciones {
+        flex-wrap: wrap;
+    }
+
+    .btn-editar,
+    .btn-borrar,
+    .btn-inscrito {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
 }
