@@ -1,0 +1,15 @@
+URL PRODUCCIÓN
+luceros-pfc.infinityfreeapp.com
+
+USUARIO ALUMNO (front)
+Email: alumno@test.com
+Contraseña: 123456
+
+USUARIO PROFESOR (back)
+Email: profesor@luceros.com
+Contraseña: contrasenaprofesor
+
+ACCESO PANEL INFINITYFREE (servidor)
+URL: https://www.infinityfree.com/
+Email: luceros-pfc@protonmail.com
+Contraseña: Lucerospfc2026?
